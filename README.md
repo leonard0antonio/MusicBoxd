@@ -13,23 +13,6 @@ O projeto foi desenvolvido como forma de praticar conceitos de **frontend**, int
 
 ---
 
-## 📂 Estrutura do Projeto  
-
-MusicBoxd/
-│── src/
-│ ├── components/ # Componentes reutilizáveis
-│ ├── pages/ # Páginas principais
-│ ├── assets/ # Ícones, imagens, fontes
-│ ├── App.jsx # Componente raiz
-│ └── main.jsx # Ponto de entrada
-│
-│── public/ # Arquivos estáticos
-│── package.json
-│── vite.config.js
-│── README.md
-
----
-
 ## ⚡ Como rodar o projeto  
 
 Clone o repositório e entre na pasta:  
