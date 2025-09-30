@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import RightBar from "./RightBar";
+import Stories from "./Stories";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -14,6 +15,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Sidebar />
       <MainArea>
         <Navbar />
+        <Stories />
         <Content>{children}</Content>
       </MainArea>
       <RightBar />
@@ -40,5 +42,18 @@ const MainArea = styled.div`
 const Content = styled.main`
   flex: 1;
   padding: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   overflow-y: auto;
+
+  /* Esconde a scrollbar no Chrome, Edge e Safari */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Esconde no Firefox */
+  scrollbar-width: none;
 `;
+

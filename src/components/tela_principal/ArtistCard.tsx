@@ -1,39 +1,53 @@
+import React from "react";
 import styled from "styled-components";
 
-const Box = styled.div`
+const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 84px;
-`;
-const Avatar = styled.div<{ color?: string }>`
-  width: 64px;
-  height: 64px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  background: ${(p) => p.color || "#555"};
-`;
-const Name = styled.div`
-  margin-top: 8px;
-  font-size: 13px;
-  color: ${({ theme }) => theme.colors.text};
-  text-align: center;
+  cursor: pointer;
 `;
 
-export default function ArtistCard({
-  name,
-  color,
-}: {
-  name: string;
-  color?: string;
-}) {
+const Cover = styled.img`
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+`;
+
+const Info = styled.div`
+  margin-top: 8px;
+  text-align: center;
+  color: #fff;
+
+  h4 {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  p {
+    font-size: 12px;
+    opacity: 0.7;
+    margin: 0;
+  }
+`;
+
+type Props = {
+  album: string;
+  artist: string;
+  cover: string;
+};
+
+const ArtistCard: React.FC<Props> = ({ album, artist, cover }) => {
   return (
-    <Box>
-      <Avatar color={color}>{name.slice(0, 2).toUpperCase()}</Avatar>
-      <Name>{name}</Name>
-    </Box>
+    <Card>
+      <Cover src={cover} alt={album} />
+      <Info>
+        <h4>{album}</h4>
+        <p>{artist}</p>
+      </Info>
+    </Card>
   );
-}
+};
+
+export default ArtistCard;

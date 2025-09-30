@@ -7,7 +7,7 @@ const Container = styled.aside`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  overflow-y: auto;
+  overflow-y: hidden;
 `;
 
 const AdCard = styled.div`
