@@ -1,53 +1,91 @@
 import React from "react";
 import styled from "styled-components";
-import { Home, Music, Star, Settings } from "lucide-react";
-
-const Container = styled.aside`
-  background-color: #181a28;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-`;
-
-const Logo = styled.div`
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 30px;
-`;
-
-const Menu = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
-const MenuItem = styled.li`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: #9b87f5;
-  }
-`;
-
 
 const Sidebar: React.FC = () => {
   return (
-    <Container>
-      <Logo>🎵</Logo>
-      <Menu>
-        <MenuItem><Home size={20}/> Home</MenuItem>
-        <MenuItem><Music size={20}/> Músicas</MenuItem>
-        <MenuItem><Star size={20}/> Favoritos</MenuItem>
-        <MenuItem><Settings size={20}/> Config</MenuItem>
-      </Menu>
-    </Container>
+    <Aside>
+      <Top>
+        <img src="./tela_principal/menu.png" alt="Logo" width={42}/>
+      </Top>
+
+      <Icons>
+        <AddButton>
+          <img src="./tela_principal/criar.png" alt="" width={39}/>
+        </AddButton>
+        <NavIcon>
+          <img src="./tela_principal/home.png" alt="" width={39}/>
+        </NavIcon>
+        <NavIcon>
+         <img src="./tela_principal/lupa.png" alt="" width={39}/>
+        </NavIcon>
+        <NavIcon>
+          <img src="./tela_principal/Vector.png" alt="" width={39}/>
+        </NavIcon>
+        <NavIcon>
+          <img src="./tela_principal/User.png" alt="" width={39}/>
+        </NavIcon>
+      </Icons>
+    </Aside>
   );
 };
 
 export default Sidebar;
 
+
+
+const Aside = styled.aside`
+  width: 80px;
+  background-color: #3c4060;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+  border-right: 1px solid #2d3048;
+`;
+
+const Top = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 17px;
+  border-bottom: 2px solid #2a2d46;
+`;
+
+
+const Icons = styled.div`
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+`;
+
+const NavIcon = styled.div`
+  color: white;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+`;
+
+const AddButton = styled.div`
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background-color: #2563eb;
+  }
+`;
