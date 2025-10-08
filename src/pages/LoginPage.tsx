@@ -36,7 +36,7 @@ export default function LoginPage() {
                    <Summary_Text/>
                 <LoginBox/>
                 <img className="MusicalGirl"
-                 src="public\GirlHearingMusic-Login-register.svg" 
+                 src="/GirlHearingMusic-Login-register.svg" 
                  alt="Girl hearing music" />
                </Section>
              

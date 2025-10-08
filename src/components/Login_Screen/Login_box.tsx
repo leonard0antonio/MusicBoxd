@@ -16,22 +16,113 @@ const Box = styled.div`
 
 `
 
+const BoxContent = styled.div`
+    
+    position: relative;
+    padding: 10rem;
+
+    .loginTitle{
+    
+    font-size:48px;
+    font-weight: bold;
+    color: #000000;
+
+    }
+
+    .input{
+    display: flex;
+    border-radius: 1rem;  
+   
+    padding: 1.4rem 6rem;
+    
+    }
+
+    .inputTextEmail{
+        position: absolute;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center; 
+        bottom: 50.5%;
+        left: 29%;
+        pointer-events: none;
+
+        img{
+        height: 1.2rem;
+        margin-right: 0.3rem;
+
+        }
+        
+    
+    }
+
+    .inputTextSenha{
+        position: absolute;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center; 
+        bottom: 36.5%;
+        left: 29%;
+        pointer-events: none;
+
+        img{
+        height: 1.2rem;
+        margin-right: 0.3rem;
+
+        }
+        
+    
+    }
+
+    
+    .placeholder{
+        position: relative;
+        display: flex;
+        color: #817F7F;
+        left: 4%;
+    }
+ 
+        .placeholderSenha{
+        position: relative;
+        display: flex;
+        color: #817F7F;
+        left: 4%;
+    }
+
+    label{
+     display: flex;
+     color: #A2A9C2;
+    }
+
+`
+ {/*#TODO: ESTILIZAR BOX*/}
 export default function LoginBox(){
 
-    {/*#TODO: ESTILIZAR BOX*/}
+   
     return(
     <Box>
-        <span className='loginBox'>Logar</span>
+        <BoxContent>
+        <span className='loginTitle'>Entrar</span>
         <form>
-            <label htmlFor="fEmail">Email</label>
-            <input type="text" id="fEmail" placeholder="Digite aqui seu Email cadastrado"/><br/>
-            <label htmlFor="fPassword">Senha</label>
-             <input type="text" id="fPassword" placeholder="Digite aqui sua senha" /><br/>
+            <label  htmlFor="fEmail">Email</label>
+            <input className='input' type="text" id="fEmail"/>
+            <div className="inputTextEmail">
+            <img src="./arrouba.svg" alt="" />
+            <span style={{ fontSize: "30px", color:"#585C68", marginBottom: "px"}}>|</span>
+            <span className="placeholder">Digite aqui seu Email cadastrado</span>
+            </div>
+              <label htmlFor="fPassword">Senha</label>
+             <input className='input' type="text" id="fPassword"/>
+             <div className="inputTextSenha">
+            <img src="./arrouba.svg" alt="" />
+            <span style={{ fontSize: "30px", color:"#585C68", marginBottom: "px"}}>|</span>
+              <span className="placeholderSenha">Digite aqui sua senha</span>
+              </div>
              <a href="">Não tem uma conta? <strong>Cadastrar-se</strong></a>
             <input type="submit" value="Entrar"/>
             <input type="submit" value="google"/>
             <input type="submit" value="facebook"/>
         </form>
+        </BoxContent>
     </Box>
     )
 }
