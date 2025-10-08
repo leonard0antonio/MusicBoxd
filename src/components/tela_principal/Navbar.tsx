@@ -1,21 +1,39 @@
 import React from "react";
 import styled from "styled-components";
-import { Menu, Search, Bell, PlusCircle } from "lucide-react";
+import { Search, Bell, PlusCircle, Menu } from "lucide-react";
 
 const Container = styled.nav`
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #2a2d3e;
   padding: 10px 20px;
   border-bottom: 1px solid #3a3d52;
-  height: 60px;
 `;
 
 const Left = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
+`;
+
+const MenuButton = styled.button`
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media (min-width: 1024px) {
+    display: none; /* Esconde em telas grandes */
+  }
 `;
 
 const Logo = styled.div`
@@ -127,12 +145,20 @@ const Profile = styled.div`
   }
 `;
 
-const Navbar: React.FC = () => {
+type NavbarProps = {
+  onToggleSidebar?: () => void; // função recebida do Layout
+};
+
+const Navbar: React.FC<NavbarProps> = ({ onToggleSidebar }) => {
   return (
     <Container>
-      {}
+      {/* Lado esquerdo */}
       <Left>
-        <Menu size={26} />
+        {/* Botão de menu */}
+        <MenuButton onClick={onToggleSidebar}>
+          <Menu size={22} />
+        </MenuButton>
+
         <Logo>
           <img src="./logo-Music.png" alt="Logo" />
           <span>
@@ -146,7 +172,7 @@ const Navbar: React.FC = () => {
         <SearchIcon>
           <Search size={18} />
         </SearchIcon>
-        <Input placeholder="Pesquisar músicas ou albuns" />
+        <Input placeholder="Pesquisar músicas ou álbuns" />
       </Center>
 
       {/* Direita */}

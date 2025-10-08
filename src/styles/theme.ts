@@ -4,6 +4,6 @@ export const theme = {
     card: "#242734",
     text: "#E6E9EF",
     muted: "#9AA0B4",
-    accent: "#6EE7B7",
+    accent: "#3E425E",
   },
 };
