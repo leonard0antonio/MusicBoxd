@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ArtistCard from "../components/tela_principal/ArtistCard";
+import StoriesBar from "../components/tela_principal/StoriesBar";
 import {
   Play,
   Heart,
@@ -178,6 +179,7 @@ const ArrowButton = styled.button<{ right?: boolean }>`
 `;
 
 export default function MainPage() {
+
   const artists = [
     {
       album: "Máquina do tempo",
@@ -244,6 +246,7 @@ export default function MainPage() {
 
   return (
     <Container>
+      <StoriesBar />
       <Section>
         <h3>Em Alta</h3>
         <ArrowButton onClick={() => scroll(-300)}>
@@ -268,7 +271,7 @@ export default function MainPage() {
         <h3>Comentários</h3>
         <Wrap>
           <Header>
-            <Avatar src="https://i.pravatar.cc/100" alt="user" />
+            <Avatar src="https://i.pravatar.cc/1005" alt="user" />
             <UserInfo>
               <span>Publicado por: Max Lima</span>
               <span>há 1h</span>
@@ -308,7 +311,7 @@ export default function MainPage() {
 
         <Wrap>
           <Header>
-            <Avatar src="https://i.pravatar.cc/100" alt="user" />
+            <Avatar src="https://i.pravatar.cc/1004" alt="user" />
             <UserInfo>
               <span>Publicado por: Max Lima</span>
               <span>há 1h</span>
@@ -348,7 +351,7 @@ export default function MainPage() {
 
         <Wrap>
           <Header>
-            <Avatar src="https://i.pravatar.cc/100" alt="user" />
+            <Avatar src="https://i.pravatar.cc/1003" alt="user" />
             <UserInfo>
               <span>Publicado por: Max Lima</span>
               <span>há 1h</span>
@@ -388,7 +391,7 @@ export default function MainPage() {
 
         <Wrap>
           <Header>
-            <Avatar src="https://i.pravatar.cc/100" alt="user" />
+            <Avatar src="https://i.pravatar.cc/1002" alt="user" />
             <UserInfo>
               <span>Publicado por: Max Lima</span>
               <span>há 1h</span>
@@ -428,7 +431,7 @@ export default function MainPage() {
 
         <Wrap>
           <Header>
-            <Avatar src="https://i.pravatar.cc/100" alt="user" />
+            <Avatar src="https://i.pravatar.cc/1001" alt="user" />
             <UserInfo>
               <span>Publicado por: Max Lima</span>
               <span>há 1h</span>
