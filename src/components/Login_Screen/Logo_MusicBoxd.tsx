@@ -1,18 +1,15 @@
- import styled from "styled-components"
+import styled from "styled-components";
 
- const Container = styled.div`
- 
+const Container = styled.div`
   display: grid;
   gap: 105px;
-  
- `
+`;
 
- const Logo = styled.div`
-    display:flex;
-    margin:6rem 0rem 6rem 10rem;
-    gap: 10px;
-    align-items: center;
-
+const Logo = styled.div`
+  display: flex;
+  margin: 6rem 0rem 6rem 10rem;
+  gap: 10px;
+  align-items: center;
 
   img {
     width: 80px;
@@ -30,21 +27,15 @@
   }
 `;
 
-
-
- 
- 
- export default function Logo_MusicBoxd(){
-
-    return(
-            <Container>
-                    <Logo>
-                        <img src="./musicboxdLogo.svg" alt="Logo" />
-                         <span>Music<span>Boxd</span>
-                            </span>
-                     </Logo>
-                   
-                    
-            </Container>
-    )
- }
+export default function Logo_MusicBoxd() {
+  return (
+    <Container>
+      <Logo>
+        <img src="./musicboxdLogo.svg" alt="Logo" />
+        <span>
+          Music<span>Boxd</span>
+        </span>
+      </Logo>
+    </Container>
+  );
+}

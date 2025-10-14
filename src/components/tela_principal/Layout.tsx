@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
-import RightBar from "./RightBar";
-import Stories from "./Stories";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -15,10 +13,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Sidebar />
       <MainArea>
         <Navbar />
-        <Stories />
         <Content>{children}</Content>
-      </MainArea>
-      <RightBar />
+      </MainArea> 
     </Container>
   );
 };
@@ -27,11 +23,12 @@ export default Layout;
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 240px 1fr 300px;
+  grid-template-columns: 80px 1fr;
   height: 100vh;
   background-color: #1e2131;
   color: #fff;
 `;
+
 
 const MainArea = styled.div`
   display: flex;
