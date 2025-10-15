@@ -8,25 +8,25 @@ const SummaryText = styled.div`
 
     max-width: 18rem;
   }
-
-  .summary {
+`;
+const Summary = styled.span`
     font-size: 30px;
     display: flex;
     padding-bottom: 0px;
     max-width: 40.87rem;
     color: #bfc0c5;
-  }
+  
 `;
 
 export default function Summary_Text() {
   return (
     <SummaryText>
       <h3>Bem-vindo(a) ao Music boxd</h3>
-      <span className="summary">
+      <Summary>
         Descubra, organize, avalie e compartilhe seus <br /> álbuns e artistas
         favoritos. Explore o que os outros estão ouvindo e conecte-se com
         amantes de música.
-      </span>
+      </Summary>
     </SummaryText>
   );
 }
