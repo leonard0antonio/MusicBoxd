@@ -5,6 +5,7 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/tela_principal/Layout";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import Register2Page from "./pages/Register2Page";
 import MainPage from "./pages/MainPage";
 import ProfilePage from "./pages/ProfilePage";
 
@@ -22,6 +23,8 @@ function App() {
           {/*#TODO FAZER COMPONENTE REGISTER*/}
           <Route path="/register" element={<RegisterPage />} />
 
+          <Route path="/register/2" element={<Register2Page />} />
+          
           <Route
             path="/"
             element={

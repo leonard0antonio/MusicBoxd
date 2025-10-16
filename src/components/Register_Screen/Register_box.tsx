@@ -1,6 +1,6 @@
-import React from "react";
-import {useNavigate} from 'react-router-dom';
+import React from 'react';
 import styled from "styled-components";
+import {useNavigate} from 'react-router-dom';
 
 const Box = styled.div`
   background-color: #ffffff;
@@ -45,7 +45,7 @@ const InputWrapper = styled.div`
 const Icon = styled.img`
 position: absolute;
 left: 1rem;
-height: 1.2rem;
+height: 1rem;
 
 `;
 
@@ -153,13 +153,16 @@ const HorizontalLine = styled.img`
 
 `;
 
-export default function LoginBox() {
+
+
+export default function RegisterBox() {
+
   const navigate = useNavigate()
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    navigate('/#')
+    navigate('/register/2')
   }
 
   return (
@@ -169,33 +172,31 @@ export default function LoginBox() {
 
         <Form onSubmit={handleSubmit}>
         <InputSection>
-          <Label htmlFor="fEmail">Email:</Label>
+          <Label htmlFor="fName">Nome:</Label>
             <InputWrapper>
+            <Icon src="./tela_register/NameRegisterIcon.svg" alt="" />
+            <Input
+              type="text"
+              id="fName"
+              placeholder="Digite aqui seu nome completo"
+            />
+          </InputWrapper>
+
+          <Label htmlFor="fEmail">Email:</Label>
+          <InputWrapper>
             <Icon src="./tela_login/arrouba.svg" alt="" />
             <Input
               type="email"
               id="fEmail"
               placeholder="Digite aqui seu Email cadastrado"
-              required 
-            />
-          </InputWrapper>
-
-          <Label htmlFor="fPassword">Senha:</Label>
-          <InputWrapper>
-            <Icon src="./tela_login/lock-password.svg" alt="" />
-            <Input
-              type="password"
-              id="fPassword"
-              placeholder="Digite aqui sua senha"
-              required 
             />
           </InputWrapper>
         </InputSection>
-                    <RegisterUser href="/#/register">
-            Não tem uma conta? <strong>Cadastrar-se</strong>
+                    <RegisterUser href="/#/login">
+            Já tem uma conta?   <strong>Conecte-se</strong>
           </RegisterUser>
-         
-          <LoginInputButton type="submit" value="ENTRAR"/>
+      
+          <LoginInputButton type="submit" value="Avançar"/>
           <OrSection>
           <HorizontalLine src="./tela_login/Line.svg" alt="" />
           <span> OU </span>
