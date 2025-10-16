@@ -1,4 +1,5 @@
-import LoginBox from "../components/Login_Screen/Login_box";
+
+import Register2Box from "../components/Register_Screen/Register2_Screen/Register2_box";
 import Logo_MusicBoxd from "../components/Login_Screen/Logo_MusicBoxd";
 import Summary_Text from "../components/Login_Screen/SummaryText";
 import styled from "styled-components";
@@ -19,14 +20,14 @@ const MusicalGirl = styled.img`
     top: 22rem;
     left: 9rem;
 `;
+export default function Register2Page() {
 
-export default function LoginPage() {
   return (
     <Container>
       <Logo_MusicBoxd />
       <Section>
         <Summary_Text />
-        <LoginBox />
+        <Register2Box />
         <MusicalGirl
           src="public\tela_login\GirlHearingMusic-Login-register.svg"
           alt="Girl hearing music"
