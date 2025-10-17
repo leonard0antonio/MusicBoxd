@@ -7,36 +7,40 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import Register2Page from "./pages/Register2Page";
 import MainPage from "./pages/MainPage";
-import ProfilePage from "./pages/ProfilePage";
+import { ProfilePage } from "./pages/ProfilePage";
 
-{
-  /*#TODO: Verificar se a lógica do app está seguindo as normas segundo a documentação do React*/
-}
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Router>
         <Routes>
+          {/* Página de login */}
           <Route path="/login" element={<LoginPage />} />
 
-          {/*#TODO FAZER COMPONENTE REGISTER*/}
+          {/* Fluxo de registro */}
           <Route path="/register" element={<RegisterPage />} />
-
           <Route path="/register/2" element={<Register2Page />} />
-          
+
+          {/* Página principal (home) */}
           <Route
             path="/"
             element={
               <Layout>
                 <MainPage />
-                <ProfilePage />
               </Layout>
             }
           />
 
-          {/*#TODO FAZER COMPONENTE profile*/}
-          <Route path="/profile" element={<ProfilePage />} />
+          {/* Página de perfil (Profile) */}
+          <Route
+            path="/profile"
+            element={
+              <Layout>
+                <ProfilePage />
+              </Layout>
+            }
+          />
         </Routes>
       </Router>
     </ThemeProvider>

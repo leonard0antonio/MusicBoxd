@@ -1,4 +1,3 @@
-
 import Register2Box from "../components/Register_Screen/Register2_Screen/Register2_box";
 import Logo_MusicBoxd from "../components/Login_Screen/Logo_MusicBoxd";
 import Summary_Text from "../components/Login_Screen/SummaryText";
@@ -14,14 +13,13 @@ const Section = styled.section`
   position: relative;
 `;
 const MusicalGirl = styled.img`
-    object-fit: cover;
-    object-position: -50% 2rem;
-    position: absolute;
-    top: 22rem;
-    left: 9rem;
+  object-fit: cover;
+  object-position: -50% 2rem;
+  position: absolute;
+  top: 22rem;
+  left: 9rem;
 `;
 export default function Register2Page() {
-
   return (
     <Container>
       <Logo_MusicBoxd />
