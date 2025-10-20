@@ -1,6 +1,6 @@
 // src/components/Profile/ReviewsSection.tsx
 import React from "react";
-import { Section, SectionTitle, ReviewGrid, ReviewCard, ReviewAlbum, ReviewTitle, ReviewText, Stars } from "./styles";
+import { Section, SectionTitle, ReviewGrid, ReviewCard, ReviewAlbum, ReviewTitle, ReviewText, Stars, PageWrapper } from "./styles";
 
 interface Review {
   title: string;
@@ -36,6 +36,7 @@ const reviews: Review[] = [
 
 export const ReviewsSection: React.FC = () => {
   return (
+    <PageWrapper>
     <Section>
       <SectionTitle>Avaliações</SectionTitle>
       <ReviewGrid>
@@ -49,5 +50,6 @@ export const ReviewsSection: React.FC = () => {
         ))}
       </ReviewGrid>
     </Section>
+    </PageWrapper>
   );
 };

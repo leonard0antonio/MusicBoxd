@@ -1,9 +1,10 @@
 // src/components/Profile/styles.ts
-import styled,  { css } from "styled-components";
+import styled, { css } from "styled-components";
 
 /* HEADER */
 export const HeaderContainer = styled.div`
   display: flex;
+  
   align-items: center;
   justify-content: center;
   gap: 40px;
@@ -12,6 +13,17 @@ export const HeaderContainer = styled.div`
   background: transparent;
   flex-wrap: wrap;
   max-width: 1100px;
+  display: flex;
+  justify-content: center; /* centraliza horizontalmente */
+  align-items: center;     /* centraliza verticalmente */
+
+`;
+
+export const PageWrapper = styled.div`
+display: flex;
+justify-content: center; /* centraliza horizontalmente */
+align-items: center;     /* centraliza verticalmente */
+padding: 20px;
 `;
 
 export const Avatar = styled.img`
@@ -117,7 +129,6 @@ export const Button = styled.button<{ $primary?: boolean }>`
 
 /* SECTIONS */
 export const Section = styled.section`
-  margin: 40px auto;
   max-width: 1100px;
   color: white;
 `;
@@ -156,15 +167,18 @@ export const AlbumArtist = styled.p`
 
 /* REVIEWS */
 export const ReviewGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
+  display: flex;       /* troca de grid para flex */
+  flex-wrap: wrap;     /* permite quebrar linha se necessário */
+  gap: 15px;           /* espaço entre cards */
+  justify-content: flex-start; /* alinha do lado esquerdo */
 `;
 
 export const ReviewCard = styled.div<{ $bg?: string }>`
   background: ${({ $bg }) => $bg || "#333"};
   padding: 18px;
   border-radius: 14px;
+  flex: 1 1 250px; /* cresce e encolhe, largura mínima 250px */
+  max-width: 300px; /* opcional: limitar largura */
 `;
 
 export const ReviewAlbum = styled.h4`
@@ -186,11 +200,13 @@ export const ReviewText = styled.p`
   color: #ccc;
 `;
 
+
 /* PLAYLISTS */
 export const PlaylistGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 15px;
+  display: flex;
+  flex-wrap: wrap;           /* permite quebrar linha se necessário */
+  gap: 15px;                 /* espaço entre cards */
+  justify-content: flex-start; /* alinha do lado esquerdo */
 `;
 
 export const PlaylistCard = styled.div`
@@ -200,6 +216,8 @@ export const PlaylistCard = styled.div`
   background: #1f1f2e;
   padding: 14px;
   border-radius: 12px;
+  flex: 1 1 300px;  /* cresce e encolhe, largura mínima 300px */
+  max-width: 350px;  /* opcional: limitar largura máxima */
 `;
 
 export const PlaylistCover = styled.img`
@@ -217,3 +235,5 @@ export const PlaylistDesc = styled.p`
   font-size: 13px;
   color: #bbb;
 `;
+
+
