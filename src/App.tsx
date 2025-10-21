@@ -8,7 +8,8 @@ import RegisterPage from "./pages/RegisterPage";
 import Register2Page from "./pages/Register2Page";
 import MainPage from "./pages/MainPage";
 import { ProfilePage } from "./pages/ProfilePage";
-import TrendingPage from "./pages/TrendingPage"
+import TrendingPage from "./pages/TrendingPage";
+import ExplorePage from "./pages/explorePage";
 
 function App() {
   return (
@@ -43,7 +44,17 @@ function App() {
             }
           />
 
-          {/* Página de em alta (trending) */}
+          {/* Página explorar (Explore) */}
+          <Route
+            path="/explore"
+            element={
+              <Layout>
+                <ExplorePage />
+              </Layout>
+            }
+          />
+
+          {/* Página em alta (trending) */}
           <Route
             path="/trendig"
             element={
@@ -52,7 +63,6 @@ function App() {
               </Layout>
             }
           />
-
         </Routes>
       </Router>
     </ThemeProvider>

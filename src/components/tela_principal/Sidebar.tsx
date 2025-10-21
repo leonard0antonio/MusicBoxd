@@ -26,7 +26,9 @@ const Sidebar: React.FC = () => {
           </Link>
         </NavIcon>
         <NavIcon>
+          <Link to="/explore">
           <img src="./tela_principal/lupa.png" alt="" width={39} />
+          </Link>
         </NavIcon>
         <NavIcon>
           <Link to="/trendig">

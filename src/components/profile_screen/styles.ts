@@ -4,18 +4,25 @@ import styled, { css } from "styled-components";
 /* HEADER */
 export const HeaderContainer = styled.div`
   display: flex;
-  
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 40px;
-  padding: 40px 60px;
-  color: #fff;
   background: transparent;
+  color: #fff;
+  max-width: 1000px;
+  width: 100%;
+  padding: 40px 60px;
+  border-radius: 20px;
   flex-wrap: wrap;
-  max-width: 1100px;
-  display: flex;
-  justify-content: center; /* centraliza horizontalmente */
-  align-items: center;     /* centraliza verticalmente */
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 30px 20px;
+  }
 
 `;
 
@@ -27,49 +34,60 @@ padding: 20px;
 `;
 
 export const Avatar = styled.img`
-  width: 120px;
-  height: 120px;
+    width: 160px;
+  height: 160px;
   border-radius: 50%;
   border: 3px solid #4c4cff;
   object-fit: cover;
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 130px;
+    height: 130px;
+  }
 `;
 
 export const InfoSection = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  justify-content: center;
+  gap: 20px;
 `;
 
 export const TopRow = styled.div`
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 15px;
+  }
 `;
 
 export const Name = styled.h1`
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  margin-top: 15px;
 `;
 
 export const Bio = styled.p`
   max-width: 700px;
-  margin-top: 10px;
-  line-height: 1.6;
   color: #ccc;
   font-size: 1rem;
+  line-height: 1.6;
 `;
 
 export const Stats = styled.div`
   display: flex;
   gap: 40px;
+  align-items: center;
 
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     justify-content: center;
-    width: 100%;
+    gap: 30px;
   }
 `;
 
@@ -80,27 +98,31 @@ export const StatItem = styled.div`
   text-align: center;
 
   strong {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: #fff;
   }
 
   span {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: #ccc;
   }
 `;
 
 export const ButtonGroup = styled.div`
-  display: flex;
-  gap: 10px;
+   display: flex;
   flex-wrap: wrap;
+  gap: 12px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 export const Button = styled.button<{ $primary?: boolean }>`
   border: none;
-  padding: 10px 18px;
-  border-radius: 10px;
+  padding: 12px 22px;
+  border-radius: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -110,7 +132,7 @@ export const Button = styled.button<{ $primary?: boolean }>`
       ? css`
           background: linear-gradient(90deg, #6366f1, #3b82f6);
           color: #fff;
-
+          box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
           &:hover {
             opacity: 0.9;
           }
@@ -118,12 +140,12 @@ export const Button = styled.button<{ $primary?: boolean }>`
       : css`
           background: #262626;
           color: #fff;
-
           &:hover {
             background: #333;
           }
         `}
 `;
+
 
 
 
@@ -199,7 +221,6 @@ export const ReviewText = styled.p`
   font-size: 13px;
   color: #ccc;
 `;
-
 
 /* PLAYLISTS */
 export const PlaylistGrid = styled.div`

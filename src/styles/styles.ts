@@ -181,3 +181,27 @@ to {
 export const AnimatedPage = styled.div`
 animation: ${fadeIn} 0.5s ease;
 `;
+
+/*                ExplorePage                               */
+
+export const ExploreWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 20px;
+  color: #fff;
+  min-height: 100vh;
+`;
+
+export const Title_explore = styled.h1`
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+`;
+
+export const Subtitle = styled.p`
+  font-size: 1.1rem;
+  color: #aaa;
+  margin-bottom: 40px;
+`;
