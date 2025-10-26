@@ -9,7 +9,7 @@ import Register2Page from "./pages/Register2Page";
 import MainPage from "./pages/MainPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import TrendingPage from "./pages/TrendingPage";
-import ExplorePage from "./pages/explorePage";
+import ExplorePage from "./pages/ExplorePage";
 
 function App() {
   return (
