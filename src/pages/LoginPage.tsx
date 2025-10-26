@@ -3,9 +3,12 @@ import Logo_MusicBoxd from "../components/Login_Screen/Logo_MusicBoxd";
 import Summary_Text from "../components/Login_Screen/SummaryText";
 import styled from "styled-components";
 
-const Container = styled.body`
+const Container = styled.div`
   background-color: #515cd5;
   margin: 0px;
+
+  min-height: 100vh; 
+  width: 100%;
 `;
 const Section = styled.section`
   display: flex;
