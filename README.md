@@ -8,7 +8,8 @@ O projeto foi desenvolvido como forma de praticar conceitos de **frontend**, int
 ## 🚀 Tecnologias  
 
 - ⚛️ [React](https://react.dev/)   
-- 🔄 [Vite](https://vitejs.dev/)  
+- 🔄 [Vite](https://vitejs.dev/)
+- 🤖 [Selenium](https://www.selenium.dev/)
 - 🧩 Componentes reutilizáveis  
 
 ---
