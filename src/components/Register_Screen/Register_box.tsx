@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import {useNavigate} from 'react-router-dom';
+
 
 const Box = styled.div`
   background-color: #ffffff;
@@ -153,16 +153,21 @@ const HorizontalLine = styled.img`
 
 `;
 
+interface RegisterBoxProps {
+ name: string;
+ email: string;
+ setName: (name: string) => void;
+ setEmail: (email: string) => void;
+ onFormSubmit: () => void;
+}
 
 
-export default function RegisterBox() {
-
-  const navigate = useNavigate()
+export default function RegisterBox({name, email, setName, setEmail, onFormSubmit} : RegisterBoxProps) {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    navigate('/register/2')
+    onFormSubmit()
   }
 
   return (
@@ -179,6 +184,8 @@ export default function RegisterBox() {
               type="text"
               id="fName"
               placeholder="Digite aqui seu nome completo"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </InputWrapper>
 
@@ -189,6 +196,8 @@ export default function RegisterBox() {
               type="email"
               id="fEmail"
               placeholder="Digite aqui seu Email cadastrado"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </InputWrapper>
         </InputSection>

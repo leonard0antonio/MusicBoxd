@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from "styled-components";
-import {useNavigate} from 'react-router-dom';
 
 const Box = styled.div`
   background-color: #ffffff;
@@ -153,16 +152,18 @@ const HorizontalLine = styled.img`
 
 `;
 
+interface Register2BoxProps {
+ password: string;
+ setPassword: (password:string) => void;
+ onFormSubmit: () => void;
+}
 
-
-export default function RegisterBox() {
-
-  const navigate = useNavigate()
+export default function RegisterBox({password, setPassword, onFormSubmit} : Register2BoxProps) {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    navigate('/login')
+    onFormSubmit()
   }
 
   return (
@@ -186,9 +187,11 @@ export default function RegisterBox() {
           <InputWrapper>
             <Icon src="./tela_login/lock-password.svg" alt="" />
             <Input
-              type="email"
-              id="fEmail"
+              type="password"
+              id="fPassword2"
               placeholder="Digite aqui a sua senha novamente"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </InputWrapper>
         </InputSection>

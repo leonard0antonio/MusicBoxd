@@ -2,10 +2,15 @@ import Register2Box from "../components/Register_Screen/Register2_Screen/Registe
 import Logo_MusicBoxd from "../components/Login_Screen/Logo_MusicBoxd";
 import Summary_Text from "../components/Login_Screen/SummaryText";
 import styled from "styled-components";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Container = styled.body`
+const Container = styled.div`
   background-color: #515cd5;
   margin: 0px;
+
+   min-height: 100vh; 
+  width: 100%;
 `;
 const Section = styled.section`
   display: flex;
@@ -19,13 +24,36 @@ const MusicalGirl = styled.img`
   top: 22rem;
   left: 9rem;
 `;
+
+
+
+  
+
 export default function Register2Page() {
+
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate()
+
+    const RegistrationData = {
+    password,
+  }
+
+
+  const handleSubmitPage2 = () => {
+  console.log(RegistrationData.password)
+   // navigate('/');
+  }
+
   return (
     <Container>
       <Logo_MusicBoxd />
       <Section>
         <Summary_Text />
-        <Register2Box />
+        <Register2Box
+        password={password}
+        setPassword={setPassword}
+        onFormSubmit={handleSubmitPage2}
+        />
         <MusicalGirl
           src="public\tela_login\GirlHearingMusic-Login-register.svg"
           alt="Girl hearing music"
