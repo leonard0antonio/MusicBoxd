@@ -27,10 +27,11 @@ const MusicalGirl = styled.img`
 export default function LoginPage() {
 
     const location = useLocation()
-    const registrationData = location.state?.registrationData 
 
-    const userRegisteredEmail = registrationData.email
-    const userRegisteredPassword = registrationData.password
+    const registrationData = location.state?.registrationData  ?? {}
+
+    const userRegisteredEmail = registrationData.email ?? ""
+    const userRegisteredPassword = registrationData.password ?? ""
 
   return (
     <Container>
