@@ -3,6 +3,7 @@ import Logo_MusicBoxd from "../components/Login_Screen/Logo_MusicBoxd";
 import Summary_Text from "../components/Login_Screen/SummaryText";
 import styled from "styled-components";
 import { useState } from "react";
+import { useLocation } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
@@ -31,17 +32,23 @@ const MusicalGirl = styled.img`
 
 export default function Register2Page() {
 
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState('')
     const navigate = useNavigate()
 
-    const RegistrationData = {
+    const location = useLocation()
+    const registrationData = location.state?.registrationData //recebe dados do state registrationData passado pelo handleSubmitPage1 (registerPage.tsx)
+
+   const RegistrationData = {
     password,
+    ...registrationData, 
   }
 
 
   const handleSubmitPage2 = () => {
-  console.log(RegistrationData.password)
-   // navigate('/');
+  console.log(RegistrationData.email)
+
+  
+   navigate('/login', { state: { registrationData: RegistrationData } }); //passa os dados do cadastro para o componente de login
   }
 
   return (

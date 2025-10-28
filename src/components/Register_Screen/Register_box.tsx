@@ -173,7 +173,7 @@ export default function RegisterBox({name, email, setName, setEmail, onFormSubmi
   return (
     <Box>
       <BoxContent>
-        <LoginTitle>Entrar</LoginTitle>
+        <LoginTitle>Cadastrar</LoginTitle>
 
         <Form onSubmit={handleSubmit}>
         <InputSection>

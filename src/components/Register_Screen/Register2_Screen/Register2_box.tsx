@@ -161,15 +161,18 @@ interface Register2BoxProps {
 export default function RegisterBox({password, setPassword, onFormSubmit} : Register2BoxProps) {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
+    event.preventDefault()
+    
+    alert("Registrado com sucesso!")
+                        
+            
     onFormSubmit()
   }
 
   return (
     <Box>
       <BoxContent>
-        <LoginTitle>Entrar</LoginTitle>
+        <LoginTitle>Cadastrar</LoginTitle>
 
         <Form onSubmit={handleSubmit}>
         <InputSection>

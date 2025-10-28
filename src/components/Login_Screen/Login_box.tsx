@@ -1,6 +1,8 @@
 import React from "react";
-import {useNavigate} from 'react-router-dom';
 import styled from "styled-components";
+import { useLocation } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+import { useState } from "react";
 
 const Box = styled.div`
   background-color: #ffffff;
@@ -153,14 +155,30 @@ const HorizontalLine = styled.img`
 
 `;
 
-export default function LoginBox() {
-  const navigate = useNavigate()
+interface LoginBoxProps {
+  email: string,
+  password: string,
 
+}
+
+
+export default function LoginBox({email, password} : LoginBoxProps){
+
+ const [inputEmail, setInputEmail] = useState('')
+  const [inputPassword, setInputPassword] = useState('')
+
+     const navigate = useNavigate()
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (inputEmail !== email || inputPassword !== password) {
+      alert('Email ou senha incorretos')
 
+    } else {
     navigate('/#')
+    }
   }
+
+  
 
   return (
     <Box>
@@ -177,6 +195,8 @@ export default function LoginBox() {
               id="fEmail"
               placeholder="Digite aqui seu Email cadastrado"
               required 
+              value={inputEmail}
+              onChange={(e) => setInputEmail(e.target.value)}
             />
           </InputWrapper>
 
@@ -188,6 +208,8 @@ export default function LoginBox() {
               id="fPassword"
               placeholder="Digite aqui sua senha"
               required 
+              value={inputPassword}
+              onChange={(e) => setInputPassword(e.target.value)}
             />
           </InputWrapper>
         </InputSection>

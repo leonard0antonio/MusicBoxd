@@ -2,6 +2,7 @@ import LoginBox from "../components/Login_Screen/Login_box";
 import Logo_MusicBoxd from "../components/Login_Screen/Logo_MusicBoxd";
 import Summary_Text from "../components/Login_Screen/SummaryText";
 import styled from "styled-components";
+import { useLocation } from 'react-router-dom';
 
 const Container = styled.div`
   background-color: #515cd5;
@@ -24,12 +25,22 @@ const MusicalGirl = styled.img`
 `;
 
 export default function LoginPage() {
+
+    const location = useLocation()
+    const registrationData = location.state?.registrationData 
+
+    const userRegisteredEmail = registrationData.email
+    const userRegisteredPassword = registrationData.password
+
   return (
     <Container>
       <Logo_MusicBoxd />
       <Section>
         <Summary_Text />
-        <LoginBox />
+        <LoginBox 
+        password={userRegisteredPassword}
+        email={userRegisteredEmail}
+        />
         <MusicalGirl
           src="public\tela_login\GirlHearingMusic-Login-register.svg"
           alt="Girl hearing music"
