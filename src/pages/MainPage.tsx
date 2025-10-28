@@ -1,5 +1,6 @@
 import ArtistCard from "../components/tela_principal/ArtistCard";
 import StoriesBar from "../components/tela_principal/StoriesBar";
+import { Liked } from "../components/tela_principal/Liked";
 import {
   Play,
   Heart,
@@ -9,11 +10,18 @@ import {
   Share2,
 } from "lucide-react";
 import { useRef } from "react";
+import { useState } from "react";
 
-import { Container, Section, Row, Wrap, Header, Avatar, UserInfo, SongBox, SongInfo, SongImage, Rating, Title, Text, Footer, Stat, ArrowButton, AnimatedPage } from "../styles/styles";
+import { Container, Section, Row, Wrap, Header, Avatar, UserInfo, SongBox, SongInfo, SongImage, Rating, Title, Text, Footer, Stat, ArrowButton, AnimatedPage, Like } from "../styles/styles";
 
 
 export default function MainPage() {
+
+  const [handleDetect, setHandleDetect] = useState(false); {/*UseState define handleDetect como false,  a função setHandleDetect altera esse valor sempre que a mesma for chamada */ }
+
+  function handleLike() {
+    return (setHandleDetect(!handleDetect)) /* setHandleDetect (funcao criada no useState) inverte o valor do handleDetect (padrão false) */
+  }
 
   const artists = [
     {
@@ -161,9 +169,11 @@ export default function MainPage() {
             </Text>
 
             <Footer>
-              <Stat>
-                <Heart size={18} /> 400k
-              </Stat>
+              <Like onClick={handleLike}>
+
+                {handleDetect ? <Liked likeMusic={true} /> : <Heart size={18} />}
+                <p>450k</p>
+              </Like>
               <Stat>
                 <MessageCircle size={18} /> 150k
               </Stat>
@@ -199,9 +209,11 @@ export default function MainPage() {
             </Text>
 
             <Footer>
-              <Stat>
-                <Heart size={18} /> 890k
-              </Stat>
+              <Like onClick={handleLike}>
+
+                {handleDetect ? <Liked likeMusic={true} /> : <Heart size={18} />}
+                <p>450k</p>
+              </Like>
               <Stat>
                 <MessageCircle size={18} /> 280k
               </Stat>
@@ -238,7 +250,11 @@ export default function MainPage() {
 
             <Footer>
               <Stat>
-                <Heart size={18} /> 980k
+                <Like onClick={handleLike}>
+
+                  {handleDetect ? <Liked likeMusic={true} /> : <Heart size={18} />}
+                  <p>450k</p>
+                </Like>
               </Stat>
               <Stat>
                 <MessageCircle size={18} /> 320k
@@ -276,7 +292,11 @@ export default function MainPage() {
 
             <Footer>
               <Stat>
-                <Heart size={18} /> 650k
+                <Like onClick={handleLike}>
+
+                  {handleDetect ? <Liked likeMusic={true} /> : <Heart size={18} />}
+                  <p>450k</p>
+                </Like>
               </Stat>
               <Stat>
                 <MessageCircle size={18} /> 210k
@@ -314,7 +334,11 @@ export default function MainPage() {
 
             <Footer>
               <Stat>
-                <Heart size={18} /> 1.2M
+                <Like onClick={handleLike}>
+
+                  {handleDetect ? <Liked likeMusic={true} /> : <Heart size={18} />}
+                  <p>450k</p>
+                </Like>
               </Stat>
               <Stat>
                 <MessageCircle size={18} /> 450k
