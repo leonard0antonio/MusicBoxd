@@ -22,22 +22,22 @@ const Sidebar: React.FC = () => {
         </AddButton>
         <NavIcon>
           <Link to="/">
-            <img src="./tela_principal/home.png" alt="" width={39} />
+            <img src="./tela_principal/home.png" alt="" width={39} id="home"/>
           </Link>
         </NavIcon>
         <NavIcon>
           <Link to="/explore">
-          <img src="./tela_principal/lupa.png" alt="" width={39} />
+          <img src="./tela_principal/lupa.png" alt="" width={39} id="pesquisar"/>
           </Link>
         </NavIcon>
         <NavIcon>
           <Link to="/trendig">
-          <img src="./tela_principal/Vector.png" alt="" width={39} />
+          <img src="./tela_principal/Vector.png" alt="" width={39} id="emAlta"/>
           </Link>
         </NavIcon>
         <NavIcon>
           <Link to="/profile">
-            <img src="./tela_principal/User.png" alt="" width={39} />
+            <img src="./tela_principal/User.png" alt="" width={39} id="perfil"/>
           </Link>
         </NavIcon>
       </Icons>
