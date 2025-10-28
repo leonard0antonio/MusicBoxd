@@ -38,9 +38,7 @@ export default function RegisterPage() {
 
 
   const handleSubmitPage1 = () => {
-    console.log(RegistrationData.email)
-      console.log(RegistrationData.name)
-    navigate('/register/2');
+    navigate('/register/2', { state: {registrationData: RegistrationData }}); //passa os dados do cadastro para o componente de register2
   }
 
   return (
