@@ -76,8 +76,8 @@ span:last-child {
 `;
 
 interface SongBoxProps {
-    bgColor?: string;
-  }
+  bgColor?: string;
+}
 
 export const SongBox = styled.div<SongBoxProps>`
 display: flex;
@@ -137,8 +137,20 @@ border-top: 1px solid rgba(255, 255, 255, 0.1);
 padding-top: 10px;
 `;
 
-export const Stat = styled.div`
+export const Stat = styled.button`
 display: flex;
+background-color: transparent;
+border: none;
+align-items: center;
+gap: 6px;
+color: #ccc;
+font-size: 13px;
+`;
+
+export const Like = styled.button`
+display: flex;
+background-color: transparent;
+border: none;
 align-items: center;
 gap: 6px;
 color: #ccc;
