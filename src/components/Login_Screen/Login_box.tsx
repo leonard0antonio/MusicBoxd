@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { useLocation } from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
 import { useState } from "react";
 
@@ -164,7 +163,7 @@ interface LoginBoxProps {
 
 export default function LoginBox({email, password} : LoginBoxProps){
 
- const [inputEmail, setInputEmail] = useState('')
+  const [inputEmail, setInputEmail] = useState('')
   const [inputPassword, setInputPassword] = useState('')
 
      const navigate = useNavigate()
@@ -178,13 +177,10 @@ export default function LoginBox({email, password} : LoginBoxProps){
     }
   }
 
-  
-
   return (
     <Box>
       <BoxContent>
         <LoginTitle>Entrar</LoginTitle>
-
         <Form onSubmit={handleSubmit}>
         <InputSection>
           <Label htmlFor="fEmail">Email:</Label>
