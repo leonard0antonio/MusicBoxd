@@ -1,81 +1,46 @@
-import styled from "styled-components";
+import { Play, Heart, MessageCircle, Share2 } from "lucide-react";
 
-const Wrap = styled.article`
-  background: ${({ theme }) => theme.colors.background};
-  padding: 14px;
-  border-radius: 12px;
-  margin-bottom: 14px;
-`;
-const Header = styled.div`
-  display: flex;
-  gap: 12px;
-  align-items: center;
-`;
-const Avatar = styled.div<{ color?: string }>`
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  background: ${(p) => p.color || "#555"};
-`;
-const User = styled.div`
-  font-weight: 600;
-`;
-const Rating = styled.div`
-  color: ${({ theme }) => theme.colors.accent};
-  font-size: 14px;
-`;
-const Text = styled.p`
-  color: #d3d6df;
-  margin: 12px 0;
-`;
-const Actions = styled.div`
-  display: flex;
-  gap: 8px;
-`;
-const Btn = styled.button<{ ghost?: boolean }>`
-  padding: 6px 10px;
-  border-radius: 8px;
-  border: ${(p) => (p.ghost ? "1px solid rgba(255,255,255,0.04)" : "0")};
-  background: ${(p) => (p.ghost ? "transparent" : "#2c2f42")};
-  color: #fff;
-`;
+import { Wrap, Header, Avatar, UserInfo, SongBox, SongInfo, Rating, Title, Text, Footer, Stat } from "../tela_principal/styles"
 
-export default function FeedCard({
-  user,
-  rating,
-  text,
-  color,
-}: {
-  user: string;
-  rating: number;
-  text: string;
-  color?: string;
-}) {
+export default function FeedCard() {
   return (
     <Wrap>
       <Header>
-        <Avatar color={color}>
-          {user
-            .split(" ")
-            .map((n) => n[0])
-            .slice(0, 2)
-            .join("")
-            .toUpperCase()}
-        </Avatar>
-        <div>
-          <User>{user}</User>
-          <Rating>{"★".repeat(rating)}</Rating>
-        </div>
+        <Avatar src="https://i.pravatar.cc/100" alt="user" />
+        <UserInfo>
+          <span>Publicado por: Max Lima</span>
+          <span>há 1h</span>
+        </UserInfo>
       </Header>
-      <Text>{text}</Text>
-      <Actions>
-        <Btn>Curtir</Btn>
-        <Btn ghost>Comentar</Btn>
-      </Actions>
+
+      <SongBox>
+        <SongInfo>
+          <h4>O SOM</h4>
+          <span>Matue • 333</span>
+        </SongInfo>
+        <Play size={24} />
+      </SongBox>
+
+      <Rating>★★★★★</Rating>
+      <Title>Aquele som que bate diferente</Title>
+
+      <Text>
+        Quando ouvi “O Som” do Matuê pela primeira vez, senti uma vibe muito
+        forte de confiança e presença. A batida prende logo de cara e a letra
+        passa aquela sensação de “tô no controle”.
+      </Text>
+
+      <Footer>
+        <Stat>
+          <Heart size={18} /> 400k
+        </Stat>
+        <Stat>
+          <MessageCircle size={18} /> 150k
+        </Stat>
+        <Stat>
+          <Share2 size={18} />
+        </Stat>
+      </Footer>
     </Wrap>
   );
 }

@@ -1,39 +1,22 @@
-import styled from "styled-components";
+import React from "react";
+import { Card,Cover, Info } from "../tela_principal/styles"
 
-const Box = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 84px;
-`;
-const Avatar = styled.div<{ color?: string }>`
-  width: 64px;
-  height: 64px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  background: ${(p) => p.color || "#555"};
-`;
-const Name = styled.div`
-  margin-top: 8px;
-  font-size: 13px;
-  color: ${({ theme }) => theme.colors.text};
-  text-align: center;
-`;
+type Props = {
+  album: string;
+  artist: string;
+  cover: string;
+};
 
-export default function ArtistCard({
-  name,
-  color,
-}: {
-  name: string;
-  color?: string;
-}) {
+const ArtistCard: React.FC<Props> = ({ album, artist, cover }) => {
   return (
-    <Box>
-      <Avatar color={color}>{name.slice(0, 2).toUpperCase()}</Avatar>
-      <Name>{name}</Name>
-    </Box>
+    <Card>
+      <Cover src={cover} alt={album} />
+      <Info>
+        <h4>{album}</h4>
+        <p>{artist}</p>
+      </Info>
+    </Card>
   );
-}
+};
+
+export default ArtistCard;

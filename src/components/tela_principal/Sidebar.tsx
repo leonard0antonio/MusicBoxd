@@ -1,53 +1,48 @@
 import React from "react";
-import styled from "styled-components";
-import { Home, Music, Star, Settings } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const Container = styled.aside`
-  background-color: #181a28;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-`;
-
-const Logo = styled.div`
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 30px;
-`;
-
-const Menu = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
-const MenuItem = styled.li`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: #9b87f5;
-  }
-`;
-
+import {
+  Aside,
+  Top,
+  Icons,
+  NavIcon,
+  AddButton,
+} from "../tela_principal/styles"
 
 const Sidebar: React.FC = () => {
   return (
-    <Container>
-      <Logo>🎵</Logo>
-      <Menu>
-        <MenuItem><Home size={20}/> Home</MenuItem>
-        <MenuItem><Music size={20}/> Músicas</MenuItem>
-        <MenuItem><Star size={20}/> Favoritos</MenuItem>
-        <MenuItem><Settings size={20}/> Config</MenuItem>
-      </Menu>
-    </Container>
+    <Aside>
+      <Top>
+        <img src="./tela_principal/menu.png" alt="Logo" width={42} />
+      </Top>
+
+      <Icons>
+        <AddButton>
+          <img src="./tela_principal/criar.png" alt="" width={39} />
+        </AddButton>
+        <NavIcon>
+          <Link to="/">
+            <img src="./tela_principal/home.png" alt="" width={39} id="home"/>
+          </Link>
+        </NavIcon>
+        <NavIcon>
+          <Link to="/explore">
+          <img src="./tela_principal/lupa.png" alt="" width={39} id="pesquisar"/>
+          </Link>
+        </NavIcon>
+        <NavIcon>
+          <Link to="/trendig">
+          <img src="./tela_principal/Vector.png" alt="" width={39} id="emAlta"/>
+          </Link>
+        </NavIcon>
+        <NavIcon>
+          <Link to="/profile">
+            <img src="./tela_principal/User.png" alt="" width={39} id="perfil"/>
+          </Link>
+        </NavIcon>
+      </Icons>
+    </Aside>
   );
 };
 
 export default Sidebar;
-
