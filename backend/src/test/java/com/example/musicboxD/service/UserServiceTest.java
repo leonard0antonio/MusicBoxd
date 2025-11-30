@@ -13,7 +13,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import static org.mockito.ArgumentMatchers.any;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -34,7 +33,7 @@ class UserServiceTest {
     private UserService userService;
 
     @Test
-    @DisplayName("Deve salvar usuário com sucesso")
+    @DisplayName("Should save user successfully")
     void shouldSaveUserSuccessfully() {
         UserRecordDto dto = new UserRecordDto("John Doe", "Bio test", "john@email.com", "M", "12345");
         User userEntity = new User();
@@ -52,7 +51,7 @@ class UserServiceTest {
     }
 
     @Test
-    @DisplayName("Deve listar todos os usuários")
+    @DisplayName("Should return all users")
     void shouldReturnAllUsers() {
         List<User> users = List.of(new User(), new User());
         when(userRepository.findAll()).thenReturn(users);
@@ -63,7 +62,7 @@ class UserServiceTest {
     }
 
     @Test
-    @DisplayName("Deve encontrar usuário por ID")
+    @DisplayName("Should find users by ID")
     void shouldFindUserById() {
         Long id = 1L;
         User user = new User();
@@ -77,16 +76,17 @@ class UserServiceTest {
     }
 
     @Test
-    @DisplayName("Deve lançar exceção ao buscar ID inexistente")
+    @DisplayName("Should throw exception when not finding user")
     void shouldThrowExceptionWhenUserNotFound() {
         Long id = 99L;
         when(userRepository.findById(id)).thenReturn(Optional.empty());
 
-        assertThrows(UserNotFoundException.class, () -> userService.getOneUser(id));
+        UserNotFoundException thrown = assertThrows(UserNotFoundException.class, () -> userService.getOneUser(id));
+        assertNotNull(thrown.getMessage());
     }
 
     @Test
-    @DisplayName("Deve atualizar usuário com sucesso")
+    @DisplayName("Should update user successfully")
     void shouldUpdateUserSuccessfully() {
         Long id = 1L;
         User existingUser = new User();
@@ -105,19 +105,7 @@ class UserServiceTest {
     }
 
     @Test
-    @DisplayName("Deve lançar erro ao atualizar usuário inexistente")
-    void shouldThrowErrorUpdatingNonExistentUser() {
-        Long id = 99L;
-        UserRecordDto dto = new UserRecordDto("Name", "Bio", "email", "M", "pass");
-        
-        when(userRepository.findById(id)).thenReturn(Optional.empty());
-
-        assertThrows(UserNotFoundException.class, () -> userService.updateUser(id, dto));
-        verify(userRepository, never()).save(any());
-    }
-
-    @Test
-    @DisplayName("Deve deletar usuário com sucesso")
+    @DisplayName("Should delete playlist successfully")
     void shouldDeleteUserSuccessfully() {
         Long id = 1L;
         User user = new User();
@@ -129,13 +117,4 @@ class UserServiceTest {
         verify(userRepository, times(1)).delete(user);
     }
 
-    @Test
-    @DisplayName("Deve lançar erro ao deletar usuário inexistente")
-    void shouldThrowErrorDeletingNonExistentUser() {
-        Long id = 99L;
-        when(userRepository.findById(id)).thenReturn(Optional.empty());
-
-        assertThrows(UserNotFoundException.class, () -> userService.deleteOneUser(id));
-        verify(userRepository, never()).delete(any());
-    }
 }

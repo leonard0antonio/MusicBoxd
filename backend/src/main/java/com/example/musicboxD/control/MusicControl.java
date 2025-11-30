@@ -49,6 +49,6 @@ public class MusicControl {
     @DeleteMapping("/musics/{id}")
     public ResponseEntity<String> deleteOneMusic(@PathVariable(value = "id") Long musicID) {
         musicService.deleteOneMusic(musicID);
-        return ResponseEntity.status(HttpStatus.OK).body("música deletada com sucesso!");
+        return ResponseEntity.status(HttpStatus.OK).body("Music is deleted successfully");
     }
 }

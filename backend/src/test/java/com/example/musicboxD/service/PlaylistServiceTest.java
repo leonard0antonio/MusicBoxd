@@ -33,7 +33,7 @@ class PlaylistServiceTest {
     private PlaylistService playlistService;
 
     @Test
-    @DisplayName("Deve salvar playlist com sucesso")
+    @DisplayName("Should save playlist successfully")
     void shouldSavePlaylistSuccessfully() {
         PlaylistRecordDto dto = new PlaylistRecordDto(List.of("Music 1", "Music 2"), "My Playlist");
         Playlist playlist = new Playlist(1L, "My Playlist", List.of("Music 1", "Music 2"), null);
@@ -49,7 +49,7 @@ class PlaylistServiceTest {
     }
 
     @Test
-    @DisplayName("Deve retornar todas as playlists")
+    @DisplayName("Should return all playlists")
     void shouldReturnAllPlaylists() {
         List<Playlist> playlists = List.of(new Playlist(), new Playlist());
         when(playlistRepository.findAll()).thenReturn(playlists);
@@ -60,7 +60,7 @@ class PlaylistServiceTest {
     }
 
     @Test
-    @DisplayName("Deve encontrar playlist por ID")
+    @DisplayName("Should find playlists by ID")
     void shouldFindPlaylistById() {
         Long id = 1L;
         Playlist playlist = new Playlist();
@@ -74,16 +74,17 @@ class PlaylistServiceTest {
     }
 
     @Test
-    @DisplayName("Deve lançar exceção ao não encontrar playlist")
+    @DisplayName("Should throw exception when not finding playlist")
     void shouldThrowExceptionWhenPlaylistNotFound() {
         Long id = 99L;
         when(playlistRepository.findById(id)).thenReturn(Optional.empty());
 
-        assertThrows(PlaylistNotFoundException.class, () -> playlistService.getOnePlaylist(id));
+        PlaylistNotFoundException thrown = assertThrows(PlaylistNotFoundException.class, () -> playlistService.getOnePlaylist(id));
+        assertNotNull(thrown.getMessage());
     }
 
     @Test
-    @DisplayName("Deve atualizar playlist com sucesso")
+    @DisplayName("Should update playlist successfully")
     void shouldUpdatePlaylistSuccessfully() {
         Long id = 1L;
         Playlist existingPlaylist = new Playlist(id, "Old Name", List.of("A"), null);
@@ -99,7 +100,7 @@ class PlaylistServiceTest {
     }
 
     @Test
-    @DisplayName("Deve deletar playlist com sucesso")
+    @DisplayName("Should delete playlist successfully")
     void shouldDeletePlaylistSuccessfully() {
         Long id = 1L;
         Playlist playlist = new Playlist();

@@ -49,6 +49,6 @@ public class PlaylistControl {
     @DeleteMapping("/playlists/{id}")
     public ResponseEntity<String> deletePlaylist(@PathVariable(value = "id") Long id) {
         playlistService.deletePlaylist(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Playlist deleted successfully");
+        return ResponseEntity.status(HttpStatus.OK).body("Playlist is deleted successfully");
     }
 }

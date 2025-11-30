@@ -33,18 +33,16 @@ class MusicServiceTest {
     private MusicService musicService;
 
     @Test
-    @DisplayName("Deve salvar música com sucesso")
+    @DisplayName("Should save music successfully")
     void shouldSaveMusicSuccessfully() {
-        // Arrange
+    
         MusicRecordDto dto = new MusicRecordDto("Song 1", "Artist 1", "Rock", "Album 1");
         Music music = new Music(1L, "Song 1", "Artist 1", "Rock", "Album 1");
         
         when(musicRepository.save(any(Music.class))).thenReturn(music);
-
-        // Act
+    
         Music savedMusic = musicService.saveMusic(dto);
 
-        // Assert
         assertNotNull(savedMusic);
         assertEquals("Song 1", savedMusic.getSongName());
         assertEquals("Artist 1", savedMusic.getArtist());
@@ -52,7 +50,7 @@ class MusicServiceTest {
     }
 
     @Test
-    @DisplayName("Deve retornar todas as músicas")
+    @DisplayName("Should return all songs")
     void shouldReturnAllMusics() {
         List<Music> musics = List.of(new Music(), new Music());
         when(musicRepository.findAll()).thenReturn(musics);
@@ -63,7 +61,7 @@ class MusicServiceTest {
     }
 
     @Test
-    @DisplayName("Deve encontrar música por ID")
+    @DisplayName("Should find music by ID")
     void shouldFindMusicById() {
         Long id = 1L;
         Music music = new Music();
@@ -77,16 +75,17 @@ class MusicServiceTest {
     }
 
     @Test
-    @DisplayName("Deve lançar exceção ao não encontrar música")
+    @DisplayName("Should throw exception when not finding music")
     void shouldThrowExceptionWhenMusicNotFound() {
         Long id = 99L;
         when(musicRepository.findById(id)).thenReturn(Optional.empty());
 
-        assertThrows(MusicNotFoundException.class, () -> musicService.getOneMusic(id));
+        MusicNotFoundException thrown = assertThrows(MusicNotFoundException.class, () -> musicService.getOneMusic(id));
+        assertNotNull(thrown.getMessage());
     }
 
     @Test
-    @DisplayName("Deve atualizar música com sucesso")
+    @DisplayName("Should update music successfully")
     void shouldUpdateMusicSuccessfully() {
         Long id = 1L;
         Music existingMusic = new Music(id, "Old Song", "Old Artist", "Old Genre", "Old Album");
@@ -102,7 +101,7 @@ class MusicServiceTest {
     }
 
     @Test
-    @DisplayName("Deve deletar música com sucesso")
+    @DisplayName("Should delete music successfully")
     void shouldDeleteMusicSuccessfully() {
         Long id = 1L;
         Music music = new Music();
