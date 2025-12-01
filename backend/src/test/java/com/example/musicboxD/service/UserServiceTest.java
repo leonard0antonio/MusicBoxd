@@ -117,4 +117,26 @@ class UserServiceTest {
         verify(userRepository, times(1)).delete(user);
     }
 
+    @Test
+    @DisplayName("Should throw exception when updating non-existent user")
+    void shouldThrowExceptionWhenUpdatingNonExistentUser() {
+        Long id = 99L;
+        UserRecordDto updateDto = new UserRecordDto("New Name", "New Bio", "new@email.com", "F", "pass");
+        when(userRepository.findById(id)).thenReturn(Optional.empty());
+        UserNotFoundException exception = assertThrows(UserNotFoundException.class, 
+            () -> userService.updateUser(id, updateDto));
+        assertNotNull(exception.getMessage());
+        verify(userRepository, times(0)).save(any(User.class));
+    }
+
+    @Test
+    @DisplayName("Should throw exception when deleting non-existent user")
+    void shouldThrowExceptionWhenDeletingNonExistentUser() {
+        Long id = 99L;
+        when(userRepository.findById(id)).thenReturn(Optional.empty());
+        UserNotFoundException exception = assertThrows(UserNotFoundException.class, 
+            () -> userService.deleteOneUser(id));
+        assertNotNull(exception.getMessage());
+        verify(userRepository, times(0)).delete(any(User.class));
+    }
 }

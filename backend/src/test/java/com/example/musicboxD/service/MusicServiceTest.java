@@ -35,14 +35,10 @@ class MusicServiceTest {
     @Test
     @DisplayName("Should save music successfully")
     void shouldSaveMusicSuccessfully() {
-    
         MusicRecordDto dto = new MusicRecordDto("Song 1", "Artist 1", "Rock", "Album 1");
         Music music = new Music(1L, "Song 1", "Artist 1", "Rock", "Album 1");
-        
         when(musicRepository.save(any(Music.class))).thenReturn(music);
-    
         Music savedMusic = musicService.saveMusic(dto);
-
         assertNotNull(savedMusic);
         assertEquals("Song 1", savedMusic.getSongName());
         assertEquals("Artist 1", savedMusic.getArtist());
@@ -54,9 +50,7 @@ class MusicServiceTest {
     void shouldReturnAllMusics() {
         List<Music> musics = List.of(new Music(), new Music());
         when(musicRepository.findAll()).thenReturn(musics);
-
         List<Music> result = musicService.getAllMusics();
-
         assertEquals(2, result.size());
     }
 
@@ -66,11 +60,8 @@ class MusicServiceTest {
         Long id = 1L;
         Music music = new Music();
         music.setMusicID(id);
-        
         when(musicRepository.findById(id)).thenReturn(Optional.of(music));
-
         Music result = musicService.getOneMusic(id);
-
         assertEquals(id, result.getMusicID());
     }
 
@@ -79,7 +70,6 @@ class MusicServiceTest {
     void shouldThrowExceptionWhenMusicNotFound() {
         Long id = 99L;
         when(musicRepository.findById(id)).thenReturn(Optional.empty());
-
         MusicNotFoundException thrown = assertThrows(MusicNotFoundException.class, () -> musicService.getOneMusic(id));
         assertNotNull(thrown.getMessage());
     }
@@ -90,12 +80,9 @@ class MusicServiceTest {
         Long id = 1L;
         Music existingMusic = new Music(id, "Old Song", "Old Artist", "Old Genre", "Old Album");
         MusicRecordDto updateDto = new MusicRecordDto("New Song", "New Artist", "New Genre", "New Album");
-
         when(musicRepository.findById(id)).thenReturn(Optional.of(existingMusic));
         when(musicRepository.save(any(Music.class))).thenAnswer(i -> i.getArgument(0));
-
         Music updatedMusic = musicService.updateMusic(id, updateDto);
-
         assertEquals("New Song", updatedMusic.getSongName());
         assertEquals("New Artist", updatedMusic.getArtist());
     }
@@ -106,10 +93,31 @@ class MusicServiceTest {
         Long id = 1L;
         Music music = new Music();
         music.setMusicID(id);
-
         when(musicRepository.findById(id)).thenReturn(Optional.of(music));
-
         assertDoesNotThrow(() -> musicService.deleteOneMusic(id));
         verify(musicRepository, times(1)).delete(music);
+    }
+
+    @Test
+    @DisplayName("Should throw exception when updating non-existent music")
+    void shouldThrowExceptionWhenUpdatingNonExistentMusic() {
+        Long id = 99L;
+        MusicRecordDto updateDto = new MusicRecordDto("New Song", "New Artist", "New Genre", "New Album");
+        when(musicRepository.findById(id)).thenReturn(Optional.empty());
+        MusicNotFoundException exception = assertThrows(MusicNotFoundException.class, 
+            () -> musicService.updateMusic(id, updateDto));
+        assertNotNull(exception.getMessage());
+        verify(musicRepository, times(0)).save(any(Music.class));
+    }
+
+    @Test
+    @DisplayName("Should throw exception when deleting non-existent music")
+    void shouldThrowExceptionWhenDeletingNonExistentMusic() {
+        Long id = 99L;
+        when(musicRepository.findById(id)).thenReturn(Optional.empty());
+        MusicNotFoundException exception = assertThrows(MusicNotFoundException.class, 
+            () -> musicService.deleteOneMusic(id));
+        assertNotNull(exception.getMessage());
+        verify(musicRepository, times(0)).delete(any(Music.class));
     }
 }

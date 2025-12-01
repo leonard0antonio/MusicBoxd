@@ -1,0 +1,8 @@
+para rodar a api:
+1- buildar
+./mvnw clean install
+
+2- rodar o arquivo jar
+java -jar target/nome-do-seu-arquivo.jar
+
+PS: Substitua nome-do-seu-arquivo.jar pelo nome real do JAR que foi gerado (localizado na pasta target)

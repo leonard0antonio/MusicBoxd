@@ -6,7 +6,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @Entity
@@ -29,7 +32,7 @@ public class Review{
     private int reviewLikeQuantity;
     private int replyQuantity;
 
-    private String imageUrl; //
+    private String imageUrl;
 
     @ManyToOne
     @JoinColumn(name="user_id", referencedColumnName = "userID")
